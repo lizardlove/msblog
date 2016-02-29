@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>home</title>
+	<link rel="stylesheet" type="text/css" href="../css/home.css">
+	<link rel="stylesheet" type="text/css" href="../css/navigation.css">
+	
+</head> 
+<body>
+    <div class="music"></div><!--这块我单独定位，脱离文档流，后端不用考虑-->
+    <div class="cen-pic">
+			<div class="welcome-title">Welcome,my friend.</div><!--欢迎标语-->
+			<div class="theme">XXXX</div><!--博客主题，可在用户界面修改-->
+			<div class="close-w"></div><!--关闭按钮，点击关闭欢迎页-->
+			<div class="ZXY"></div><!--张曦镱的图像-->
+			<div class="JTX"></div><!--蒋天星的图像-->
+	</div>
+	<ul id="navigation">
+		<li class="mylogo"></li><!--可替换logo-->
+		<li class="home">Home</li><!--首页，点击回到首页-->
+		<li class="journal">Journal</li><!--日志，点击转到日志集合那一页（每篇日志可以单独一页），需要把所有日志集合，且每篇日志至少一个标签(需要后端完成）-->
+		<li class="ablum">Ablum</li><!--相册，功能同日志（需要后端完成）-->
+		<li class="write">Write</li><!--跳转到写日志页面-->
+		<li class="land">Sign</li><!--登陆-->
+		<li class="private">Me</li><!--用户信息，跳转到用户界面，可进行后面的修改操作，和登陆占相同位置，登陆后原本登陆的位置换成用户信息-->
+	</ul>
+	<div class="banner"></div>
+	<div class="core">
+		<div class="journal-collection">
+			<div class="every-journal"><!--这一部分是在日志的集合页面，一篇日志的模板，内容从后端获取-->
+				<div class="jour-information">
+					<div class="time"></div><!--日志发表时间-->
+					<div class="jour-title">xxxxx</div><!--日志标题-->
+				</div>
+				<div class="jour-content">xxxxxxxxxxxxxxxxxxxxxxxxxxx</div><!--日志部分内容-->
+				<div class="jour-act">
+					<div class="jour-tag">xx</div><!--日志标签-->
+					<div class="love-jour">x</div><!--赞-->
+					<div class="all-jour">xxx</div><!--查看全文-->
+				</div>
+			</div>
+			<div class="every-journal"><!--这一部分是在日志的集合页面，一篇日志的模板，内容从后端获取-->
+				<div class="jour-information">
+					<div class="time">2015</div><!--日志发表时间-->
+					<div class="jour-title">xxxxx</div><!--日志标题-->
+				</div>
+				<div class="jour-content">xxxxxxxxxxxxxxxxxxxxxxxxxxx</div><!--日志部分内容-->
+				<div class="jour-act">
+					<div class="jour-tag">xx</div><!--日志标签-->
+					<div class="love-jour">赞</div><!--赞-->
+					<div class="all-jour">浏览全文</div><!--查看全文-->
+				</div>
+			</div>
+		</div>
+		<div class="tags"><!--标签栏，各种各样的标签-->
+			<div class="tag">xx</div>
+			<div class="tag">xx</div>
+			<div class="tag">xx</div>
+			<div class="tag">xx</div>
+			<div class="tag">xx</div>
+		</div>
+		<div class="recommend"><!--推荐阅读-->
+			<div class="rec-title">xx</div><!--文章标题-->
+			<div class="rec-title">xxx</div>
+			<div class="rec-title">xx</div>
+			<div class="rec-title">xxx</div>
+			<div class="rec-title">xxx</div>
+		</div>
+		<div class="massage">留言板</div><!--留言板，这块看你的了-->
+	</div>
+<script type="text/javascript" src="../JS/navigation.js"></script>
+<script type="text/javascript">
+	love.click(function(){
+	var love = document.querySelector('.love-jour');
+    var lovenumber = love.innerHTML;
+    var id = document.querySelector('.jour-title').innerHTML;
+	love.fadeOut(300);
+	$.ajax({
+		type:"POST",
+		url:"../lib/journal.php",
+		data:"id="+id,
+		cache:false,
+		success:function(data){
+			love.html(data);
+			love.fadeIn(300);
+		}
+	});
+});
+</script>	
+</body>
+</html>

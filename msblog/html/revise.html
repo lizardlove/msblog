@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>revise</title>
+	<link rel="stylesheet" type="text/css" href="../css/resvise.css">
+	<link rel="stylesheet" type="text/css" href="../css/navigation.css">
+</head>
+<body>
+	<div class="cen-pic">
+			<div class="welcome-title">Welcome,my friend.</div><!--欢迎标语-->
+			<div class="theme">XXXX</div><!--博客主题，可在用户界面修改-->
+			<div class="close-w">
+				<i class="iconfont">&#x33;</i>
+			</div><!--关闭按钮，点击关闭欢迎页-->
+			<div class="ZXY"></div><!--张曦镱的图像-->
+			<div class="JTX"></div><!--蒋天星的图像-->
+	</div>
+	<ul id="navigation">
+		<li class="mylogo"></li><!--可替换logo-->
+		<li class="home">Home</li><!--首页，点击回到首页-->
+		<li class="journal">Journal</li><!--日志，点击转到日志集合那一页（每篇日志可以单独一页），需要把所有日志集合，且每篇日志至少一个标签(需要后端完成）-->
+		<li class="ablum">Ablum</li><!--相册，功能同日志（需要后端完成）-->
+		<li class="write">Write</li><!--跳转到写日志页面-->
+		<li class="land">Sign</li><!--登陆-->
+		<li class="private">Me</li><!--用户信息，跳转到用户界面，可进行后面的修改操作，和登陆占相同位置，登陆后原本登陆的位置换成用户信息-->
+	</ul>
+	<div class="banner">
+		
+	</div>
+	<div class="revise">
+		<form action="1.php" method="POST">
+			<div class="relogo">
+				<div class="clogo"></div>
+				<input type="file" name="relogo" style="display:none" class="rel">
+				<div class="logobutton">选择</div>
+			</div>
+			<div class="rename">
+			    <div class="det">昵称：蜥蜴</div>
+			    <div class="rea" >修改</div>
+				<input type="text" name="rename" class="reput">
+			</div>
+			<div class="reqq">
+			    <div class="det">QQ :1026123335</div>
+			    <div class="req" >修改</div>
+				<input type="text" name="reqq" class="reput"  >
+			</div>
+			<div class="retel">
+			    <div class="det">电话： 13608379573</div>
+			    <div class="ret" >修改</div>
+				<input type="text" name="retel" class="reput" >
+			</div>
+			<input type="submit" value="提交" class="sub">
+		</form>
+	</div>
+	<div class="sign">
+		<form action="1.php" method="POST">
+			<div class="s-name">用户：<input class="nameput" name="nameput" type="text" /></div>
+			<br/>
+			<div class="s-psw">密码：<input class="pswput" name="pswput" type="text" /></div>
+			<input class="signsub" type="submit">
+		</form>
+	</div>
+<script type="text/javascript" src="../JS/navigation.js"></script>
+<script type="text/javascript">
+	var rel = document.querySelector('.rel');
+var logob = document.querySelector('.logobutton');
+logob.addEventListener('click',function(){
+	rel.click();
+});
+var rea = document.querySelector('.rea');
+var req = document.querySelector('.req');
+var ret = document.querySelector('.ret');
+var reputs = document.querySelectorAll('.reput');
+rea.addEventListener('click',function(){
+	reputs[0].style.display = "block";
+});
+req.addEventListener('click',function(){
+	reputs[1].style.display = "block";
+});
+ret.addEventListener('click',function(){
+	reputs[2].style.display = "block";
+});
+</script>
+</body>
+</html>
