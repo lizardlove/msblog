@@ -133,6 +133,22 @@
     -webkit-animation-duration: 2s;
     -webkit-animation-iteration-count: infinite;
 }
+#go {
+	width: 200px;
+	height: 50px;
+	font-size: 30px;
+	text-align: center;
+	line-height: 50px;
+	vertical-align: middle;
+	margin-left: 100px;
+	margin-top: 30px;
+	position: relative;
+	float: left;
+	border-radius: 10px;
+	-webkit-animation-name: naiPulse;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-iteration-count: infinite;
+}
 @font-face {font-family: "iconfont";
   src: url('iconfont.eot'); /* IE9*/
   src: url('iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */

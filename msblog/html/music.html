@@ -84,7 +84,7 @@ span {position: absolute;}
 	vertical-align: middle;
 	text-align: center;
 	background: #f0f0f0;
-	opacity: 0.5
+	opacity: 0.5;
 }
 #text {
 	width: 300px;
@@ -130,6 +130,70 @@ span {position: absolute;}
     -webkit-animation-duration: 2s;
     -webkit-animation-iteration-count: infinite;
 }
+#plus{
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	float: left;
+	font-size: 25px;
+	line-height: 30px;
+	vertical-align: middle;
+	text-align: center;
+	-webkit-animation-name: boom;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-iteration-count: infinite;
+    position: absolute;
+    top: 300px;
+}
+#more {
+	width: 300px;
+	height: 200px;
+	position: absolute;
+	top: 200px;
+	left: 50px;
+	border-radius: 10px;
+	background: #f0f0f0;
+	display: none;
+}
+#src {
+	width: 280px;
+	height: 40px;
+	font-size: 18px;
+	line-height: 40px;
+	vertical-align: middle;
+	position: relative;margin-top: 5px;
+	margin-left: 20px;
+}
+#pic {
+	width: 280px;
+	height: 40px;
+	font-size: 18px;
+	line-height: 40px;
+	vertical-align: middle;
+	position: relative;margin-top: 10px;
+	margin-left: 20px;
+}
+#list {
+	width: 280px;
+	height: 40px;
+	font-size: 18px;
+	line-height: 40px;
+	vertical-align: middle;
+	position: relative;margin-top: 15px;
+	margin-left: 20px;
+}
+#go {
+	width: 80px;
+	height: 30px;
+	line-height: 30px;
+	vertical-align: middle;
+	text-align: center;
+	position: relative;
+	margin-left: 110px;
+	margin-top: 10px;
+	background: #ccffff;
+	border-radius: 10px;
+}
 </style>
 </head>
 <body>
@@ -147,9 +211,18 @@ span {position: absolute;}
 		<div id="next">Next</div>
     </div>
 	<div id="text"></div>
-	<div id="boom">
+	<form id="boom">
 		<input id="msg" autocomplete="off" maxlength="100">
     	<div id="sub">发送</div>
+	</form>
+	<div id="plus">+</div>
+	<div id="more">
+		<form>
+			<div id="src">SRC:<input class="put" autocomplete="off" maxlength="100"></div>
+			<div id="pic">图片:<input class="put" autocomplete="off" maxlength="100"></div>
+			<div id="list">信息:<input class="put" autocomplete="off" maxlength="100"></div>
+			<div id="go">go</div>
+		</form>
 	</div>
 <script type="text/javascript">
 var $=function(i){return document.getElementById(i)},
@@ -168,8 +241,7 @@ next=function(){
 	mc_num<mc_max?mc_num++:mc_num=0;
 };
 function start(){
-	var w=document.getElementsByTagName('html')[0].clientWidth;
-	$('timeline').style.width =w+"px";
+	$('timeline').style.width =_width+"px";
 	mc.src=mc_list[mc_num];
 	$('mcimg').style.backgroundImage="url("+mc_img[mc_num]+")";
 	mc.play();
@@ -204,16 +276,22 @@ $('play').onmouseout=function(){
 		$('pause').style.display="none";
 	};
 };
-$('timeline').onfocus(function(){
-	
-})
+$('timeline').onclick=function(){
+	var e=event||window.event;
+	var level = e.clientX;
+	var fcou = (level/_width)*mc.duration;
+	$('time').style.width=fcou+"%";
+	mc.currentTime=fcou;
+	mc.play();
+	$('iconfont').innerHTML='&#xf006d;';
+};
+var _width = document.getElementsByTagName('html')[0].clientWidth;
 $('sub').onclick=function(){
 	if(!$('msg').value){
 		alert('请点火弹幕');
 	}else{
 		var span = document.createElement('span');
 		span.innerHTML = msg.value;
-		var _width = document.getElementsByTagName('html')[0].clientWidth;
 		var _height = document.getElementsByTagName('html')[0].clientHeight;
 		var y = Math.random()*100;
 		var x = (_width-5);
@@ -225,6 +303,9 @@ $('sub').onclick=function(){
 		document.getElementsByTagName('html')[0].appendChild(span);
 		$('msg').value='';
     };
+};
+$('plus').onclick=function(){
+	$('more').style.display="block";
 };
 </script>
 </body>
